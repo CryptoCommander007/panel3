@@ -1,0 +1,4 @@
+USE GUEST_SYSTEM;
+
+
+CALL REGISTER_GUEST_USER('test_user', 'password123');

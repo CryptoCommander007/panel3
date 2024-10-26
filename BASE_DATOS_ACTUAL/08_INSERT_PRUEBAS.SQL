@@ -1,0 +1,22 @@
+USE FORO_EMPRENDE;
+
+-- Definir variables de entrada
+SET @P_EMAIL = 'usuario@example.com';
+SET @P_PASSWORD = 'password_segura';
+
+-- Definir una variable de salida para el resultado del registro
+SET @P_RESULT = 0;
+
+-- Llamar al procedimiento almacenado para registrar al usuario
+CALL SP_REGISTER_USER(@P_EMAIL, @P_PASSWORD, @P_RESULT);
+
+-- Comprobar el resultado
+SELECT @P_RESULT AS Resultado;
+
+
+-- Insertar categoría "EMPRESAS CHILE" y las subcategorías asociadas
+INSERT INTO CATEGORIES (CAT_CATEGORY_CODE, CAT_CATEGORY_NAME, CAT_SUBCATEGORY_CODE, CAT_SUBCATEGORY_NAME)
+VALUES 
+(SHA2('EMPRESAS CHILE', 256), 'EMPRESAS CHILE', SHA2('CREACION-GESTION-MANTENCION EMPRESA', 256), 'CREACION-GESTION-MANTENCION EMPRESA'),
+(SHA2('EMPRESAS CHILE', 256), 'EMPRESAS CHILE', SHA2('NORMATIVA CHILENA', 256), 'NORMATIVA CHILENA'),
+(SHA2('EMPRESAS CHILE', 256), 'EMPRESAS CHILE', SHA2('GUIA DEL EMPRENDEDOR', 256), 'GUIA DEL EMPRENDEDOR');
